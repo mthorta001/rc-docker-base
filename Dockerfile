@@ -65,7 +65,7 @@ RUN wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-
     chown -R root:root $ANDROID_COMMAND_LINE_TOOLS_HOME
 
 ENV PATH=$PATH:$ANDROID_COMMAND_LINE_TOOLS_HOME/bin \
-    ANDROID_HOME = /root
+    ANDROID_HOME=/root
 
 # install platform-tools
 RUN echo y | sdkmanager "platform-tools" --sdk_root=$ANDROID_HOME
