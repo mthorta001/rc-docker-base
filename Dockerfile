@@ -64,6 +64,12 @@ RUN wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-
 
 ENV PATH=$PATH:$ANDROID_COMMAND_LINE_TOOLS_HOME/bin
 
+# install platform-tools
+RUN echo y | sdkmanager "platform-tools"
+
+ENV ANDROID_HOME = /root \
+    PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # install cmake
 RUN mkdir ~/tmp && \
     cd ~/tmp && \
