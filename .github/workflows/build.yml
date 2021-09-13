@@ -1,0 +1,29 @@
+name: rc docker base
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: image tag version
+        required: true
+        default: ''
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    env:
+      tag: ${{ github.event.inputs.tag }}
+      username: ${{ secrets.DOCKER_USERNAME }}
+      password: ${{ secrets.DOCKER_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build & push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: rcswain/rc-docker-base
+          tags: $tag, latest
+          registry: docker.io
+          username: $username
+          password: $password
