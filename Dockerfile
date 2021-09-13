@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 LABEL maintainer="Swain Zheng"
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 WORKDIR /root
 
 #==================
@@ -93,6 +95,10 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash && \
     apt-get autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean
+
+# set time zone
+ENV TZ="Asia/Shanghai"
+RUN echo "${TZ}" > /etc/timezone
 
 
 
