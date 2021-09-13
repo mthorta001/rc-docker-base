@@ -23,7 +23,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: rcswain/rc-docker-base
-          tags: $tag, latest
+          tags: ${{ env.tag }}, latest
           registry: docker.io
-          username: $username
-          password: $password
+          username: ${{ env.username }}
+          password: ${{ env.password }}
